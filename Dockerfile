@@ -34,6 +34,11 @@ RUN apk --no-cache add \
     ARG KUBECTL_VERSION=1.17.5
     ARG KUSTOMIZE_VERSION=v3.8.1
 
+    # Install Python3
+    RUN apk add --update --no-cache python3 && \
+    python3 -m ensurepip && \
+    pip3 install --upgrade pip
+
     # https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html
     ARG AWS_IAM_AUTH_VERSION_URL=https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.9/2020-08-04/bin/linux/amd64/aws-iam-authenticator
 
